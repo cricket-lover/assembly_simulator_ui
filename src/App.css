@@ -37,18 +37,17 @@
   }
 }
 
-.main-container {
+.input-output {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
 }
 
-.text-box {
+.input-box {
   display: flex;
   flex-direction: column;
 }
 
-.text-box > button {
+.input-box > button {
   margin: 2px;
   width: 5rem;
 }
@@ -73,6 +72,7 @@
   border: 1px solid grey;
   margin: 2px;
   overflow: auto;
+  height: 400px;
 }
 
 .result-table table {
@@ -94,4 +94,14 @@ th,
 tr {
   border: 1px solid black;
   border-collapse: collapse;
+}
+
+.button-div {
+  display: flex;
+  margin-left: 2px;
+}
+
+.button-div > button {
+  width: 90px;
+  cursor: pointer;
 }

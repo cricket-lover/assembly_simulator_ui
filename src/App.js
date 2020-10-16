@@ -11,7 +11,7 @@ function App() {
   const [output, setOutput] = useState([]);
   const [steps, setSteps] = useState([]);
 
-  const handleClick = function (event) {
+  const handleClick = (event) => {
     machine.load(value);
     machine.execute();
     setOutput(machine.getPrn());
@@ -20,8 +20,18 @@ function App() {
 
   return (
     <div className="main-container">
-      <InputBox setValue={setValue} handleClick={handleClick} />
-      <OutputBox output={output} />
+      <p>ASSEMBLY SIMULATOR</p>
+      <div className="input-output">
+        <div className="input-box">
+          <InputBox setValue={setValue} handleClick={handleClick} />
+          <div className="button-div">
+            <button>Step Into</button>
+            <button onClick={handleClick}>Run</button>
+            <button>Next</button>
+          </div>
+        </div>
+        <OutputBox output={output} />
+      </div>
       <TraceTable steps={steps} />
     </div>
   );

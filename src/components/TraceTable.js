@@ -1,23 +1,27 @@
 import React from 'react';
 
+const getStep = (step, index) => {
+  return (
+    <tr key={index}>
+      <td>{step.CL}</td>
+      <td>{step.NL}</td>
+      <td className="instruction">{step.INST}</td>
+      <td>{step.A}</td>
+      <td>{step.B}</td>
+      <td>{step.C}</td>
+      <td>{step.D}</td>
+      <td>{step.EQ}</td>
+      <td>{step.NE}</td>
+      <td>{step.GT}</td>
+      <td>{step.LT}</td>
+      <td className="instruction">{step.PRN}</td>
+    </tr>
+  );
+};
+
 const getSteps = (stepsArray) => {
   const formattedSteps = stepsArray.map((step, index) => {
-    return (
-      <tr key={index}>
-        <td>{step.CL}</td>
-        <td>{step.NL}</td>
-        <td className="instruction">{step.INST}</td>
-        <td>{step.A}</td>
-        <td>{step.B}</td>
-        <td>{step.C}</td>
-        <td>{step.D}</td>
-        <td>{step.EQ}</td>
-        <td>{step.NE}</td>
-        <td>{step.GT}</td>
-        <td>{step.LT}</td>
-        <td className="instruction">{step.PRN}</td>
-      </tr>
-    );
+    return getStep(step, index);
   });
   return formattedSteps;
 };

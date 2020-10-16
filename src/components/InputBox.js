@@ -1,14 +1,13 @@
 import React from 'react';
 
-const InputBox = ({ setValue, handleClick }) => {
+const InputBox = ({ setValue }) => {
   return (
-    <div className="text-box">
+    <div>
       <textarea
         type="text"
         className="text-area"
         onChange={(e) => setValue(e.target.value)}
       />
-      <button onClick={handleClick}>Run</button>
     </div>
   );
 };
