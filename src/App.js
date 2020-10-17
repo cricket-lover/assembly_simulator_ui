@@ -17,21 +17,9 @@ function App() {
     setSteps(machine.getTable());
   };
 
-  const handleClick = (event) => {
+  const executor = (event) => {
     machine.load(value);
     machine.execute();
-    updateApp();
-  };
-
-  const handleStepInto = (event) => {
-    machine.load(value);
-    machine.executeStepWise(() => {});
-    console.log(steps);
-    updateApp();
-  };
-
-  const handleNext = (event) => {
-    machine.nextStep();
     updateApp();
   };
 
@@ -40,11 +28,11 @@ function App() {
       <p>ASSEMBLY SIMULATOR</p>
       <div className="input-output">
         <div className="input-box">
-          <Editor setValue={setValue} handleClick={handleClick} />
+          <Editor setValue={setValue} />
           <div className="button-div">
-            <button onClick={handleStepInto}>Step Into</button>
-            <button onClick={handleClick}>Run</button>
-            <button onClick={handleNext}>Next</button>
+            <button>Step Into</button>
+            <button onClick={executor}>Run</button>
+            <button>Next</button>
           </div>
         </div>
         <OutputConsole output={output} />
