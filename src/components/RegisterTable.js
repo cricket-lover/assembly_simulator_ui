@@ -26,7 +26,7 @@ const getSteps = (stepsArray) => {
   return formattedSteps;
 };
 
-const TraceTable = ({ steps }) => {
+const RegisterTable = ({ steps }) => {
   return (
     <div className="result-table">
       <table className="registerTable">
@@ -52,4 +52,4 @@ const TraceTable = ({ steps }) => {
   );
 };
 
-export default TraceTable;
+export default RegisterTable;

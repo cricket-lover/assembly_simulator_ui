@@ -105,3 +105,8 @@ tr {
   width: 90px;
   cursor: pointer;
 }
+
+.stack-table {
+  border: 1px solid grey;
+  margin: 2px;
+}

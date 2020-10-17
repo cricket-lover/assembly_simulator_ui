@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputBox = ({ setValue }) => {
+const Editor = ({ setValue }) => {
   return (
     <div>
       <textarea
@@ -12,4 +12,4 @@ const InputBox = ({ setValue }) => {
   );
 };
 
-export default InputBox;
+export default Editor;

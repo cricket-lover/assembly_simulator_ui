@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Machine from '@craftybones/assembly_simulator';
-import InputBox from './components/InputBox';
-import OutputBox from './components/OutputBox';
-import TraceTable from './components/TraceTable';
+import Editor from './components/Editor';
+import OutputConsole from './components/OutputConsole';
+import RegisterTable from './components/RegisterTable';
+import StackTable from './components/StackTable';
 import './App.css';
 
 function App() {
@@ -11,11 +12,27 @@ function App() {
   const [output, setOutput] = useState([]);
   const [steps, setSteps] = useState([]);
 
+  const updateApp = () => {
+    setOutput(machine.getPrn());
+    setSteps(machine.getTable());
+  };
+
   const handleClick = (event) => {
     machine.load(value);
     machine.execute();
-    setOutput(machine.getPrn());
-    setSteps(machine.getTable());
+    updateApp();
+  };
+
+  const handleStepInto = (event) => {
+    machine.load(value);
+    machine.executeStepWise(() => {});
+    console.log(steps);
+    updateApp();
+  };
+
+  const handleNext = (event) => {
+    machine.nextStep();
+    updateApp();
   };
 
   return (
@@ -23,16 +40,19 @@ function App() {
       <p>ASSEMBLY SIMULATOR</p>
       <div className="input-output">
         <div className="input-box">
-          <InputBox setValue={setValue} handleClick={handleClick} />
+          <Editor setValue={setValue} handleClick={handleClick} />
           <div className="button-div">
-            <button>Step Into</button>
+            <button onClick={handleStepInto}>Step Into</button>
             <button onClick={handleClick}>Run</button>
-            <button>Next</button>
+            <button onClick={handleNext}>Next</button>
           </div>
         </div>
-        <OutputBox output={output} />
+        <OutputConsole output={output} />
       </div>
-      <TraceTable steps={steps} />
+      <div className="input-output">
+        <RegisterTable steps={steps} />
+        <StackTable />
+      </div>
     </div>
   );
 }
