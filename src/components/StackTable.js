@@ -1,4 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledStack = styled.div`
+  border: 1px solid grey;
+  margin: 2px;
+`;
+
+const StyledRegisterTable = styled.table`
+  text-align: center;
+`;
 
 const getStack = (stackArray) => {
   return stackArray.map((value, index) => {
@@ -12,16 +22,16 @@ const getStack = (stackArray) => {
 
 const StackTable = ({ stack }) => {
   return (
-    <div className="stack-table">
-      <table className="registerTable">
-        <thead className="heading">
+    <StyledStack>
+      <StyledRegisterTable>
+        <thead>
           <tr>
             <th>STACK</th>
           </tr>
         </thead>
         <tbody>{stack && getStack(stack)}</tbody>
-      </table>
-    </div>
+      </StyledRegisterTable>
+    </StyledStack>
   );
 };
 

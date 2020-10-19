@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import InputPanel from './InputPanel';
 import OutputConsole from './OutputConsole';
 import RegisterTable from './RegisterTable';
 import StackTable from './StackTable';
+
+const StyledPanel = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 const Assembly = ({ machine }) => {
   const [output, setOutput] = useState([]);
@@ -31,20 +37,20 @@ const Assembly = ({ machine }) => {
   };
 
   return (
-    <div className="main-container">
+    <div>
       <p>ASSEMBLY SIMULATOR</p>
-      <div className="input-output">
+      <StyledPanel>
         <InputPanel
           executor={executor}
           handleStepInto={handleStepInto}
           handleNext={handleNext}
         />
         <OutputConsole output={output} />
-      </div>
-      <div className="input-output">
+      </StyledPanel>
+      <StyledPanel>
         <RegisterTable steps={steps} />
         <StackTable stack={stack} />
-      </div>
+      </StyledPanel>
     </div>
   );
 };

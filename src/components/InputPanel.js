@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import Editor from './Editor';
+
+const StyledInputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledButton = styled.div`
+  display: flex;
+  margin-left: 2px;
+`;
 
 const InputPanel = (props) => {
   const [value, setValue] = useState('');
@@ -7,9 +18,9 @@ const InputPanel = (props) => {
   const [nextDisable, setNextDisable] = useState(true);
 
   return (
-    <div className="input-box">
+    <StyledInputBox>
       <Editor setValue={setValue} />
-      <div className="button-div">
+      <StyledButton>
         <button
           className={stepIntoDisable ? 'disable' : 'enable'}
           disabled={stepIntoDisable}
@@ -26,7 +37,7 @@ const InputPanel = (props) => {
           onClick={() => {
             setStepIntoDisable(false);
             setNextDisable(true);
-            props.handleNext(value);
+            props.executor(value);
           }}
         >
           Run
@@ -38,8 +49,8 @@ const InputPanel = (props) => {
         >
           Next
         </button>
-      </div>
-    </div>
+      </StyledButton>
+    </StyledInputBox>
   );
 };
 

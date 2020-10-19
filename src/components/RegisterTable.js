@@ -1,11 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledInstruction = styled.td`
+  text-align: start;
+`;
+
+const StyledRegisterTable = styled.table`
+  text-align: center;
+`;
 
 const getStep = (step, index) => {
   return (
     <tr key={index}>
       <td>{step.CL}</td>
       <td>{step.NL}</td>
-      <td className="instruction">{step.INST}</td>
+      <StyledInstruction>{step.INST}</StyledInstruction>
       <td>{step.A}</td>
       <td>{step.B}</td>
       <td>{step.C}</td>
@@ -14,7 +23,7 @@ const getStep = (step, index) => {
       <td>{step.NE}</td>
       <td>{step.GT}</td>
       <td>{step.LT}</td>
-      <td className="instruction">{step.PRN}</td>
+      <StyledInstruction>{step.PRN}</StyledInstruction>
     </tr>
   );
 };
@@ -29,8 +38,8 @@ const getSteps = (stepsArray) => {
 const RegisterTable = ({ steps }) => {
   return (
     <div className="result-table">
-      <table className="registerTable">
-        <thead className="heading">
+      <StyledRegisterTable>
+        <thead>
           <tr>
             <th>CL</th>
             <th>NL</th>
@@ -47,7 +56,7 @@ const RegisterTable = ({ steps }) => {
           </tr>
         </thead>
         <tbody>{getSteps(steps)}</tbody>
-      </table>
+      </StyledRegisterTable>
     </div>
   );
 };

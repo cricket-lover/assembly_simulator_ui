@@ -37,34 +37,11 @@
   }
 }
 
-.input-output {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.input-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-box > button {
-  margin: 2px;
-  width: 5rem;
-}
-
 .text-area {
   width: 44rem;
   height: 22rem;
   margin: 2px;
   position: relative;
-}
-
-.output {
-  width: 44.5rem;
-  height: 22rem;
-  margin: 2px;
-  border: 1px solid grey;
-  padding: 2px;
 }
 
 .result-table {
@@ -80,30 +57,12 @@
   overflow: auto;
 }
 
-.registerTable {
-  text-align: center;
-}
-
-.instruction {
-  text-align: start;
-}
-
 table,
 td,
 th,
 tr {
   border: 1px solid black;
   border-collapse: collapse;
-}
-
-.button-div {
-  display: flex;
-  margin-left: 2px;
-}
-
-.stack-table {
-  border: 1px solid grey;
-  margin: 2px;
 }
 
 .enable {
