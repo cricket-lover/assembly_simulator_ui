@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Editor from './Editor';
+import InputPanel from './InputPanel';
 import OutputConsole from './OutputConsole';
 import RegisterTable from './RegisterTable';
 import StackTable from './StackTable';
 
 const Assembly = ({ machine }) => {
-  const [value, setValue] = useState('');
   const [output, setOutput] = useState([]);
   const [steps, setSteps] = useState([]);
   const [stack, setStack] = useState([]);
@@ -16,13 +15,13 @@ const Assembly = ({ machine }) => {
     setSteps(machine.getTable());
   };
 
-  const executor = (event) => {
+  const executor = (value) => {
     machine.load(value);
     machine.execute();
     updateApp();
   };
 
-  const handleStepInto = (event) => {
+  const handleStepInto = (value) => {
     machine.load(value);
     machine.executeStepWise(updateApp);
   };
@@ -35,14 +34,11 @@ const Assembly = ({ machine }) => {
     <div className="main-container">
       <p>ASSEMBLY SIMULATOR</p>
       <div className="input-output">
-        <div className="input-box">
-          <Editor setValue={setValue} />
-          <div className="button-div">
-            <button onClick={handleStepInto}>Step Into</button>
-            <button onClick={executor}>Run</button>
-            <button onClick={handleNext}>Next</button>
-          </div>
-        </div>
+        <InputPanel
+          executor={executor}
+          handleStepInto={handleStepInto}
+          handleNext={handleNext}
+        />
         <OutputConsole output={output} />
       </div>
       <div className="input-output">

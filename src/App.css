@@ -101,12 +101,18 @@ tr {
   margin-left: 2px;
 }
 
-.button-div > button {
+.stack-table {
+  border: 1px solid grey;
+  margin: 2px;
+}
+
+.enable {
   width: 90px;
   cursor: pointer;
 }
 
-.stack-table {
-  border: 1px solid grey;
-  margin: 2px;
+.disable {
+  width: 90px;
+  text-align: center;
+  pointer-events: none;
 }
