@@ -1,6 +1,16 @@
 import React from 'react';
 
-const StackTable = (stack, index) => {
+const getStack = (stackArray) => {
+  return stackArray.map((value, index) => {
+    return (
+      <tr key={index}>
+        <th>{value}</th>
+      </tr>
+    );
+  });
+};
+
+const StackTable = ({ stack }) => {
   return (
     <div className="stack-table">
       <table className="registerTable">
@@ -9,6 +19,7 @@ const StackTable = (stack, index) => {
             <th>STACK</th>
           </tr>
         </thead>
+        <tbody>{stack && getStack(stack)}</tbody>
       </table>
     </div>
   );

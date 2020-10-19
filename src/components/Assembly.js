@@ -8,11 +8,12 @@ const Assembly = ({ machine }) => {
   const [value, setValue] = useState('');
   const [output, setOutput] = useState([]);
   const [steps, setSteps] = useState([]);
+  const [stack, setStack] = useState([]);
 
   const updateApp = () => {
-    console.log('called updateApp');
-    setOutput(machine.getPrn().slice());
-    setSteps(machine.getTable().slice());
+    setStack(machine.getStack());
+    setOutput(machine.getPrn());
+    setSteps(machine.getTable());
   };
 
   const executor = (event) => {
@@ -24,7 +25,6 @@ const Assembly = ({ machine }) => {
   const handleStepInto = (event) => {
     machine.load(value);
     machine.executeStepWise(updateApp);
-    console.log('Entered handleStepInto', machine.getTable());
   };
 
   const handleNext = () => {
@@ -47,7 +47,7 @@ const Assembly = ({ machine }) => {
       </div>
       <div className="input-output">
         <RegisterTable steps={steps} />
-        <StackTable />
+        <StackTable stack={stack} />
       </div>
     </div>
   );
